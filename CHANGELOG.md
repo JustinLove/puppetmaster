@@ -4,6 +4,7 @@
 - Replace burntcustard's venerable drop pod effect with processed version, which has team colored laser sights.
 - Remove local flare effect
 - Account for scaled UI
+- Add game-mode category tag
 
 ## 2.3.0
 

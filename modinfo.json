@@ -1,6 +1,7 @@
 {
   "author": "wondible",
-  "build": "86765",
+  "build": "87296",
+  "category": ["game-mode"],
   "context": "server",
   "date": "2015/09/10",
   "description": "Allow specators to create and control units.",
