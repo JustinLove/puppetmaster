@@ -16,7 +16,7 @@ From there, select a player and a unit in the extra panels, and then you can use
 
 ### Companion server mods
 
-- [Peloaded Nukes](https://forums.uberent.com/threads/rel-server-preloaded-nukes.70389/) - allows gifting of immediately usable missiles
+- [Preloaded Nukes](https://forums.uberent.com/threads/rel-server-preloaded-nukes.70389/) - allows gifting of immediately usable missiles
 
 ### Recommended client mods for puppetmaster:
 
