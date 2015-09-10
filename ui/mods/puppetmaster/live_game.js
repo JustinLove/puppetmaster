@@ -205,8 +205,12 @@
     if (armyIndex() == -1) return
     var army_id = model.players()[armyIndex()].id
 
-    hdeck.raycastWithPlanet(mouseX, mouseY).then(function(result) {
-      console.log(showAR)
+    var scale = api.settings.getSynchronous('ui', 'ui_scale') || 1.0;
+
+    var x = Math.floor(mouseX * scale);
+    var y = Math.floor(mouseY * scale);
+
+    hdeck.raycastWithPlanet(x, y).then(function(result) {
       if (showAR) {
         setTimeout(ping, 4000, armyIndex(), result)
       }

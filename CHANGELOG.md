@@ -3,6 +3,7 @@
 - Extract preloaded nukes to separate mod
 - Replace burntcustard's venerable drop pod effect with processed version, which has team colored laser sights.
 - Remove local flare effect
+- Account for scaled UI
 
 ## 2.3.0
 
