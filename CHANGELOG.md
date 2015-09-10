@@ -1,6 +1,8 @@
-## 2.4.0
+## 3.0.0
 
-- Replace local flare with team colored laser sight on drop pod effect
+- Extract preloaded nukes to separate mod
+- Replace burntcustard's venerable drop pod effect with processed version, which has team colored laser sights.
+- Remove local flare effect
 
 ## 2.3.0
 

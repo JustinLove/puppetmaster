@@ -14,6 +14,10 @@ Spectators may use the 'toggle puppetmaster' keybind, which is by default alt+ct
 
 From there, select a player and a unit in the extra panels, and then you can use the standard paste keybinding, ctrl+v, and an additional paste-10, shift+ctrl+v, which can be rebound from in-game settings.
 
+### Companion server mods
+
+- [Peloaded Nukes](https://forums.uberent.com/threads/rel-server-preloaded-nukes.70389/) - allows gifting of immediately usable missiles
+
 ### Recommended client mods for puppetmaster:
 
 - [Sandbox Unit Organizer](https://forums.uberent.com/threads/rel-sandbox-unit-organizer.62310/)
@@ -28,7 +32,6 @@ From there, select a player and a unit in the extra panels, and then you can use
 ### Other Notes:
 
 - Since you have to change control to give a player units, the mod also allows the puppet-master to give unit orders, including self-destruct. (It's up to the puppet-master's discretion to allow donate-for-troll)
-- Nukes and anti-nukes are preloaded with one missile, and the metal cost is increased proportionally.
 - As discovered in the video, extra commanders don't change the losing conditions - only original coms count for assassination.
 - Controlling a player stops army stat updates; the mod clears control flags when the spectator panel opened, but it can be easy to forget you need to re-select a player in order to paste.
 - Drop pods trigger combat alerts; it has the uber/avatar icon but may be lost in existing combats

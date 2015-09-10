@@ -82,32 +82,6 @@ module.exports = function(grunt) {
       },
     },
     proc: {
-      nuke: {
-        src: [
-          'pa_ex1/units/land/nuke_launcher/nuke_launcher.json',
-          'pa_ex1/units/land/nuke_launcher/nuke_launcher_ammo.json'
-        ],
-        cwd: media,
-        dest: 'pa/units/land/nuke_launcher/nuke_launcher.json',
-        process: function(spec, ammo) {
-          spec.factory.default_ammo = [ spec.factory.initial_build_spec ]
-          spec.build_metal_cost += ammo.build_metal_cost
-          return spec
-        }
-      },
-      antinuke: {
-        src: [
-          'pa_ex1/units/land/anti_nuke_launcher/anti_nuke_launcher.json',
-          'pa_ex1/units/land/anti_nuke_launcher/anti_nuke_launcher_ammo.json'
-        ],
-        cwd: media,
-        dest: 'pa/units/land/anti_nuke_launcher/anti_nuke_launcher.json',
-        process: function(spec, ammo) {
-          spec.factory.default_ammo = [ spec.factory.initial_build_spec ]
-          spec.build_metal_cost += ammo.build_metal_cost
-          return spec
-        }
-      },
       droppod: {
         src: [
           'pa/effects/specs/default_commander_landing.pfx'
