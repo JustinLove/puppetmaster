@@ -3,6 +3,7 @@
 - Missed some flare puppet code
 - raycast fixed, don't need own version anymore
 - Ping/paste delay times account for sim speed
+- Chat announcement in-game if sandbox mode wasn't turned on
 
 ## 3.0.0
 

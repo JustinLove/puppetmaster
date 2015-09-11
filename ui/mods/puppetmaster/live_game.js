@@ -248,6 +248,10 @@
   var live_game_server_state = handlers.server_state
   handlers.server_state = function(msg) {
     if (msg.data && msg.data.client && msg.data.client.game_options) {
+      if (!msg.data.client.game_options.sandbox && model.isSpectator()) {
+        model.send_message("chat_message",
+          {message: "Oh Noes! Sandbox isn't on and Puppetmaster won't work"});
+      }
       msg.data.client.game_options.sandbox = false
     }
 
