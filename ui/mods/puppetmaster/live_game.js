@@ -74,30 +74,6 @@
     })
   }
 
-  var land_mine = "/pa/units/land/land_mine/land_mine.papa"
-  var feature_burn = "/pa/effects/specs/feature_burn.pfx"
-
-  //api.getWorldView(0).clearPuppets()
-  api.getWorldView(0).getAllPuppets(true).then(function(puppets) {
-    var view = api.getWorldView(0)
-    puppets.forEach(function(puppet) {
-      if (puppet.model
-       && puppet.model.filename == land_mine
-       && puppet.location
-       && puppet.location.scale
-       && puppet.location.scale[0] > 4.199
-       && puppet.location.scale[0] < 4.2) {
-        removePuppet(view, puppet)
-      }
-    })
-  })
-
-  var removePuppet = function(view, puppet) {
-    puppet.fx_offsets = []
-    view.puppet(puppet).then(function() {
-      view.unPuppet(puppet.id)
-    })
-  }
 
   // Spectator Announcement, including drop-pod effect
   var lastHover = {name: '', spec: ''}
