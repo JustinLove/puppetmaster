@@ -1,7 +1,8 @@
-## 3.0.1
+## 3.1.0
 
 - Missed some flare puppet code
 - raycast fixed, don't need own version anymore
+- Ping/paste delay times account for sim speed
 
 ## 3.0.0
 

@@ -13,6 +13,49 @@
     hdeck = $(this).data('holodeck')
   }
 
+  // sim speed tracking
+  var now = function() { return new Date().getTime() }
+  var previousSimTime = 0
+  var previousUITime = now()
+  var simSamples = []
+  var uiSamples = []
+  var simSpeed = 1
+
+  var base_time = handlers.time
+  handlers.time = function(payload) {
+    base_time(payload)
+
+    var simStep = (payload.end_time - previousSimTime) * 1000
+    previousSimTime = payload.end_time
+
+    if (simStep == 0) {
+      return
+    }
+
+    var t = now()
+    var uiStep = t - previousUITime
+    previousUITime = t
+
+    simSamples.unshift(simStep)
+    uiSamples.unshift(uiStep)
+  }
+
+  var sum = function(a, b) {return a + b}
+  var average = function(samples) {
+    return samples.reduce(sum, 0) / samples.length
+  }
+  var summarize = function() {
+    simSpeed = Math.max(0.001, average(simSamples) / average(uiSamples))
+    simSamples.splice(20)
+    uiSamples.splice(20)
+  }
+
+  var tick = function() {
+    summarize()
+    setTimeout(tick, 1000)
+  }
+  tick()
+
   // Ping
   var commanderIds = []
 
@@ -166,7 +209,7 @@
 
     hdeck.raycast(x, y).then(function(result) {
       if (showAR) {
-        setTimeout(ping, 4000, armyIndex(), result)
+        setTimeout(ping, 4000 / simSpeed, armyIndex(), result)
       }
 
       var drop = {
@@ -177,7 +220,7 @@
       }
       pasteUnits3D(1, drop)
       drop.what = selectedUnit.spec
-      setTimeout(pasteUnits3D, 5000, n, drop)
+      setTimeout(pasteUnits3D, 5000 / simSpeed, n, drop)
     })
 
     increment(n)
