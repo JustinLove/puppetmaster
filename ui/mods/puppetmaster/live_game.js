@@ -3,28 +3,6 @@
 
   console.log('puppetmaster')
 
-  api.Holodeck.prototype.raycastWithPlanet = function(x, y) {
-    var config = {
-      points: [[x, y]],
-      terrain: true,
-      units: false,
-      features: false
-    };
-    return engine.call('holodeck.raycast', this.id, JSON.stringify(config)).then(function(raw) {
-      var result = raw ? JSON.parse(raw) : null;
-      if (_.isObject(result)) {
-        var hitResults = result.results || [];
-        if (typeof(result.planet) != 'undefined') {
-          _.forEach(hitResults, function(hit) {
-            hit.planet = result.planet;
-          });
-        }
-        result = hitResults[0];
-      }
-      return result;
-    });
-  };
-
   // Pointer tracking
   var mouseX = 0
   var mouseY = 0
@@ -186,7 +164,7 @@
     var x = Math.floor(mouseX * scale);
     var y = Math.floor(mouseY * scale);
 
-    hdeck.raycastWithPlanet(x, y).then(function(result) {
+    hdeck.raycast(x, y).then(function(result) {
       if (showAR) {
         setTimeout(ping, 4000, armyIndex(), result)
       }

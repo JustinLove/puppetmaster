@@ -1,3 +1,8 @@
+## 3.0.1
+
+- Missed some flare puppet code
+- raycast fixed, don't need own version anymore
+
 ## 3.0.0
 
 - Extract preloaded nukes to separate mod
