@@ -122,12 +122,14 @@
     model.send_message("team_chat_message",
       {message: ['Puppetmaster gives', who.name, count.toString(), what].join(' ') + where});
 
-    who.slots.forEach(function(name) {
-      api.Panel.message('uberbar', 'sendChat', {
-        displayName: name,
-        message: [count.toString(), what].join(' ') + where,
+    if (!who.ai) {
+      who.slots.forEach(function(name) {
+        api.Panel.message('uberbar', 'sendChat', {
+          displayName: name,
+          message: [count.toString(), what].join(' ') + where,
+        })
       })
-    })
+    }
   }
 
   var selectedPlayer = ko.computed(function() {
