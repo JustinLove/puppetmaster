@@ -5,6 +5,7 @@
 - Ping/paste delay times account for sim speed
 - Chat announcement in-game if sandbox mode wasn't turned on
 - Private chat message to players who receive gifts, if the puppetmaster has client mod support
+- Include planet name in announcements in multi-planet systems
 
 ## 3.0.0
 

@@ -114,13 +114,18 @@
     }
   }
 
-  var announceGift = function(who, count, what) {
+  var announceGift = function(who, count, what, planet) {
+    var where = ''
+    if (model.celestialViewModels().length > 2) { // length includes sun
+      where = ' on ' + model.celestialViewModels()[planet].name()
+    }
     model.send_message("team_chat_message",
-      {message: ['Puppetmaster gives', who.name, count.toString(), what].join(' ')});
+      {message: ['Puppetmaster gives', who.name, count.toString(), what].join(' ') + where});
+
     who.slots.forEach(function(name) {
       api.Panel.message('uberbar', 'sendChat', {
         displayName: name,
-        message: [count.toString(), what].join(' '),
+        message: [count.toString(), what].join(' ') + where,
       })
     })
   }
@@ -150,21 +155,26 @@
     api.panels.devmode && api.panels.devmode.message('pasteCount', parseInt(count, 10));
   })
   var pasteUnit = {spec: '', name: ''}
+  var pastePlanet = 0
   var pasteReset = null
   var resetCount = function() {
     if (pasteCount() > 0) {
-      announceGift(selectedPlayer(), pasteCount(), pasteUnit.name)
+      announceGift(selectedPlayer(), pasteCount(), pasteUnit.name, pastePlanet)
     }
 
     pasteCount(0)
     clearTimeout(pasteReset)
     pasteReset = null
   }
-  var increment = function(n) {
+  var increment = function(n, planet) {
     if (selectedUnit.spec != pasteUnit.spec) {
       resetCount()
     }
+    if (planet != pastePlanet) {
+      resetCount()
+    }
     pasteUnit = selectedUnit
+    pastePlanet = planet
     pasteCount(pasteCount() + parseInt(n, 10))
     clearTimeout(pasteReset)
     pasteReset = setTimeout(resetCount, 2000)
@@ -227,9 +237,9 @@
       pasteUnits3D(1, drop)
       drop.what = selectedUnit.spec
       setTimeout(pasteUnits3D, 5000 / simSpeed, n, drop)
-    })
 
-    increment(n)
+      increment(n, result.planet)
+    })
   }
 
   var pasteUnits3D = function(n, config) {
