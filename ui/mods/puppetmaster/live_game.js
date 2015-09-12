@@ -116,12 +116,18 @@
 
   var announceGift = function(who, count, what) {
     model.send_message("team_chat_message",
-      {message: ['Puppetmaster gives', who, count.toString(), what].join(' ')});
+      {message: ['Puppetmaster gives', who.name, count.toString(), what].join(' ')});
+    who.slots.forEach(function(name) {
+      api.Panel.message('uberbar', 'sendChat', {
+        displayName: name,
+        message: [count.toString(), what].join(' '),
+      })
+    })
   }
 
   var selectedPlayer = ko.computed(function() {
     if (armyIndex() == -1) {
-      return {name: 'nobody'}
+      return {name: 'nobody', slots: []}
     } else {
       return model.players()[armyIndex()]
     }
@@ -147,7 +153,7 @@
   var pasteReset = null
   var resetCount = function() {
     if (pasteCount() > 0) {
-      announceGift(selectedPlayer().name, pasteCount(), pasteUnit.name)
+      announceGift(selectedPlayer(), pasteCount(), pasteUnit.name)
     }
 
     pasteCount(0)
