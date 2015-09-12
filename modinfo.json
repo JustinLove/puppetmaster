@@ -3,7 +3,7 @@
   "build": "87296",
   "category": ["game-mode"],
   "context": "server",
-  "date": "2015/09/10",
+  "date": "2015/09/12",
   "description": "Allow specators to create and control units.",
   "display_name": "Puppetmaster",
   "forum": "https://forums.uberent.com/threads/rel-server-puppetmaster.62534/",

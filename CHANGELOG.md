@@ -1,11 +1,11 @@
 ## 3.1.0
 
-- Missed some flare puppet code
-- raycast fixed, don't need own version anymore
-- Ping/paste delay times account for sim speed
-- Chat announcement in-game if sandbox mode wasn't turned on
 - Private chat message to players who receive gifts, if the puppetmaster has client mod support
 - Include planet name in announcements in multi-planet systems
+- Chat announcement in-game if sandbox mode wasn't turned on
+- Ping/paste delay times account for sim speed
+- Missed some flare puppet code
+- raycast fixed, don't need own version anymore
 
 ## 3.0.0
 
