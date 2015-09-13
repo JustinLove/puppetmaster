@@ -219,12 +219,6 @@
     return engineCall.apply(this, arguments);
   }
 
-  var showAR = true
-  action_sets.general.show_hide_ar = function () {
-    api.arch.toggleAR()
-    showAR = !showAR
-  }
-
   var pasteUnits = function(n) {
     if (!model.cheatAllowCreateUnit()) return
     if (n < 1) return
@@ -238,9 +232,7 @@
     var y = Math.floor(mouseY * scale);
 
     hdeck.raycast(x, y).then(function(result) {
-      if (showAR) {
-        setTimeout(ping, 4000 / simSpeed, armyIndex(), result)
-      }
+      setTimeout(ping, 4000 / simSpeed, armyIndex(), result)
 
       var drop = {
         army: army_id,
