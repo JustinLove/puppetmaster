@@ -66,6 +66,8 @@
   model.playerControlFlags.subscribe(function(flags) {
     if (armyIndex() != -1 && !commanderIds[armyIndex()]) {
       setTimeout(api.select.commander, 500)
+
+      maybeSendChatInvite(selectedPlayer())
     }
   })
 
@@ -139,6 +141,16 @@
       return model.players()[armyIndex()]
     }
   })
+
+  var maybeSendChatInvite = function(who) {
+    if (!who.ai) {
+      who.slots.forEach(function(name) {
+        api.Panel.message('uberbar', 'maybeSendChatInvite', {
+          displayName: name,
+        })
+      })
+    }
+  }
 
   var dropPodSpec = "/pa/puppetmaster/drop_pod_launcher.json"
 
