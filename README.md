@@ -20,7 +20,7 @@ From there, select a player and a unit in the extra panels, and then you can use
 
 ### Recommended client mods for puppetmaster:
 
-- [Chat With Player]() - allows automatic private chat messages to be sent to players recieving a gift.
+- [Chat With Player](https://forums.uberent.com/threads/rel-chat-with-player.70434/) - allows automatic private chat messages to be sent to players recieving a gift.
 - [Sandbox Unit Organizer](https://forums.uberent.com/threads/rel-sandbox-unit-organizer.62310/)
 - [Bulk Create Units](https://forums.uberent.com/threads/rel-bulk-create-units.62492/)
 - [Improved Player Control](https://forums.uberent.com/threads/rel-improved-player-control.62472/)
