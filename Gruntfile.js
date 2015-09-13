@@ -46,6 +46,7 @@ module.exports = function(grunt) {
               'README.md',
               'CHANGELOG.md',
               'com.wondible.pa.puppetmaster/**',
+              'icon.png',
               'ui/**',
               'pa/**'],
             dest: modPath,

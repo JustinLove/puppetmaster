@@ -5,6 +5,7 @@
 - Chat announcement in-game if sandbox mode wasn't turned on
 - Ping/paste delay times account for sim speed
 - Remove ping toggle on icon visiblity; pings aren't visible with icons off anyway.
+- Add mod icon.
 - Missed some flare puppet code
 - raycast fixed, don't need own version anymore
 
