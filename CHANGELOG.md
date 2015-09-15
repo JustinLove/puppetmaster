@@ -1,3 +1,7 @@
+## 3.2.0 Cinematic
+
+- Remove laser site from drop pod effect
+
 ## 3.1.0
 
 - Private chat message to players who receive gifts, if the puppetmaster has client mod support

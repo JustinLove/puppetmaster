@@ -93,19 +93,12 @@ module.exports = function(grunt) {
           spec.emitters = spec.emitters.filter(function(emit) {
             // white shell / smoke shell
             return emit.spec.papa != '/pa/effects/fbx/particles/sphere_ico16seg.papa' &&
-              emit.spec.shader != 'meshParticle_clip_smoke_bend'
+              emit.spec.shader != 'meshParticle_clip_smoke_bend' &&
+              emit.spec.baseTexture != '/pa/effects/textures/particles/ring.papa' && 
+              emit.spec.baseTexture != '/pa/effects/textures/particles/flat.papa'
           })
           spec.emitters.forEach(function(emit) {
-            if (emit.spec.baseTexture == '/pa/effects/textures/particles/ring.papa') {
-              emit.spec.red = emit.spec.green = emit.spec.blue = 2
-              emit.useArmyColor = 1
-            } else if (emit.spec.baseTexture == '/pa/effects/textures/particles/flat.papa') {
-              emit.spec.green = emit.spec.red
-              emit.spec.blue = emit.spec.red
-              emit.useArmyColor = 1
-              emit.lifetime = emit.emitterLifetime = 5
-              emit.spec.sizeY = [[0, 0], [0.1, 1], [0.3, 1], [1,0]]
-            } else if (emit.spec.baseTexture == '/pa/effects/textures/particles/sharp_flare.papa' && emit.offsetZ == 900) {
+            if (emit.spec.baseTexture == '/pa/effects/textures/particles/sharp_flare.papa' && emit.offsetZ == 900) {
               emit.spec.red = emit.spec.green = emit.spec.blue = 1
               if (emit.sizeX > 75) {
                 emit.useArmyColor = 1
