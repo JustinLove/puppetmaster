@@ -1,3 +1,7 @@
+## 3.2.1
+
+- Fix image paths in player guide topic
+
 ## 3.2.0
 
 - Changed interface with Bulk Create Units
