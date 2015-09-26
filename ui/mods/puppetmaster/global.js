@@ -37,6 +37,10 @@ if (window.location.href != 'coui://ui/main/game/live_game/live_game.html') {
       if (method == 'unit.debug.paste') {
         console.log("Sorry, you're a puppet")
         return undefined;
+      } else if (method == 'conn_send_message' &&
+                 arguments[1].match('"message_type":"create_unit"')) {
+        console.log("Sorry, you're a puppet")
+        return undefined;
       } else {
         return originalCall.apply(this, arguments);
       }

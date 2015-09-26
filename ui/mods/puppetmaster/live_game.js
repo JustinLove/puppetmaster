@@ -200,6 +200,10 @@
     if (method == 'unit.debug.paste') {
       console.log("Sorry, you're a puppet")
       return undefined;
+    } else if (method == 'conn_send_message' &&
+               arguments[1].match('"message_type":"create_unit"')) {
+      console.log("Sorry, you're a puppet")
+      return undefined;
     } else {
       return engineCall.apply(this, arguments);
     }

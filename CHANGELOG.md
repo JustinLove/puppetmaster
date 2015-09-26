@@ -1,6 +1,7 @@
 ## 3.2.0
 
 - Changed interface with Bulk Create Units
+- Enhanced security on unit creation
 
 ## 3.1.0
 
