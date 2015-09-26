@@ -1,3 +1,7 @@
+## 3.2.0
+
+- Changed interface with Bulk Create Units
+
 ## 3.1.0
 
 - Private chat message to players who receive gifts, if the puppetmaster has client mod support

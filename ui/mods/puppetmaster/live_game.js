@@ -234,24 +234,35 @@
     hdeck.raycast(x, y).then(function(result) {
       setTimeout(ping, 4000 / simSpeed, armyIndex(), result)
 
-      var drop = {
+      var pod = {
         army: army_id,
         what: dropPodSpec,
-        planet: result.planet,
-        location: result.pos,
       }
-      pasteUnits3D(1, drop)
-      drop.what = selectedUnit.spec
-      setTimeout(pasteUnits3D, 5000 / simSpeed, n, drop)
+      model.pasteUnits3D(1, pod, result)
+      var contents = {
+        army: army_id,
+        what: selectedUnit.spec
+      }
+      setTimeout(model.pasteUnits3D, 5000 / simSpeed, n, contents, result)
 
       increment(n, result.planet)
     })
   }
+  pasteUnits.raycast = true
+  pasteUnits.effects = true
 
-  var pasteUnits3D = function(n, config) {
+  var pasteUnits3D = function(n, drop, center) {
     if (!model.cheatAllowCreateUnit()) return
     if (n < 1) return
-    if (!config.what || config.what == '') return
+    if (!drop.what || drop.what == '') return
+
+    var config = {
+      army: drop.army,
+      what: drop.what,
+      planet: center.planet,
+      location: center.pos,
+      orientation: center.orient,
+    }
 
     for (var i = 0;i < n;i++) {
       model.send_message('create_unit', config)
@@ -339,7 +350,10 @@
     }
   }
 
-  model.pasteUnits = pasteUnits
+  if (!model.pasteUnits || !model.pasteUnits.effects) {
+    model.pasteUnits = pasteUnits
+  }
+  model.pasteUnits3D = model.pasteUnits3D || pasteUnits3D
 
   api.Panel.message('', 'inputmap.reload');
   disableCheats()
