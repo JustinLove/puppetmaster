@@ -1,9 +1,9 @@
 {
   "author": "wondible",
-  "build": "88288",
+  "build": "108271",
   "category": ["game-mode"],
   "context": "server",
-  "date": "2015/09/26",
+  "date": "2018/01/05",
   "description": "Allow specators to create and control units.",
   "display_name": "Puppetmaster",
   "forum": "https://forums.uberent.com/threads/rel-server-puppetmaster.62534/",
@@ -27,5 +27,5 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "3.2.1"
+  "version": "3.2.2"
 }

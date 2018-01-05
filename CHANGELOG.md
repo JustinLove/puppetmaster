@@ -1,3 +1,7 @@
+## 3.2.2
+
+- Fix player names in gift announcments when rapidly changing players
+
 ## 3.2.1
 
 - Fix image paths in player guide topic

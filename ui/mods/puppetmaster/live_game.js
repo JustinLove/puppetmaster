@@ -67,7 +67,7 @@
     if (armyIndex() != -1 && !commanderIds[armyIndex()]) {
       setTimeout(api.select.commander, 500)
 
-      maybeSendChatInvite(selectedPlayer())
+      maybeSendChatInvite(playerForIndex(armyIndex()))
     }
   })
 
@@ -134,13 +134,13 @@
     }
   }
 
-  var selectedPlayer = ko.computed(function() {
-    if (armyIndex() == -1) {
+  var playerForIndex = function(index) {
+    if (index == -1) {
       return {name: 'nobody', slots: []}
     } else {
-      return model.players()[armyIndex()]
+      return model.players()[index]
     }
-  })
+  }
 
   var maybeSendChatInvite = function(who) {
     if (!who.ai) {
@@ -171,9 +171,9 @@
   var pasteUnit = {spec: '', name: ''}
   var pastePlanet = 0
   var pasteReset = null
-  var resetCount = function() {
+  var resetCount = function(army_index) {
     if (pasteCount() > 0) {
-      announceGift(selectedPlayer(), pasteCount(), pasteUnit.name, pastePlanet)
+      announceGift(playerForIndex(army_index), pasteCount(), pasteUnit.name, pastePlanet)
     }
 
     pasteCount(0)
@@ -182,16 +182,16 @@
   }
   var increment = function(n, planet) {
     if (selectedUnit.spec != pasteUnit.spec) {
-      resetCount()
+      resetCount(armyIndex())
     }
     if (planet != pastePlanet) {
-      resetCount()
+      resetCount(armyIndex())
     }
     pasteUnit = selectedUnit
     pastePlanet = planet
     pasteCount(pasteCount() + parseInt(n, 10))
     clearTimeout(pasteReset)
-    pasteReset = setTimeout(resetCount, 2000)
+    pasteReset = setTimeout(resetCount, 2000, armyIndex())
   }
 
   // API Hook
