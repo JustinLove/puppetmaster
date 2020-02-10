@@ -1,3 +1,8 @@
+## 3.2.3
+
+- Improve capture of unit info when rapidly changing units
+- Use engine sim speed instead of local estimation
+
 ## 3.2.2
 
 - Fix player names in gift announcments when rapidly changing players
