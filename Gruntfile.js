@@ -3,6 +3,7 @@ var prompt = require('prompt')
 prompt.start()
 
 var modPath = '../../server_mods/com.wondible.pa.puppetmaster/'
+//var modPath = '../../client_mods/com.wondible.pa.puppetmaster.client/'
 var stream = 'stable'
 var media = require('./lib/path').media(stream)
 var hack = require('./lib/path').media('hack')

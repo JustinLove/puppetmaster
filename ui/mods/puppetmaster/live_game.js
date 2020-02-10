@@ -180,18 +180,18 @@
     clearTimeout(pasteReset)
     pasteReset = null
   }
-  var increment = function(n, planet) {
-    if (selectedUnit.spec != pasteUnit.spec) {
-      resetCount(armyIndex())
+  var increment = function(pasteArmyIndex, n, pasteSelectedUnit, planet) {
+    if (pasteSelectedUnit.spec != pasteUnit.spec) {
+      resetCount(pasteArmyIndex)
     }
     if (planet != pastePlanet) {
-      resetCount(armyIndex())
+      resetCount(pasteArmyIndex)
     }
-    pasteUnit = selectedUnit
+    pasteUnit = pasteSelectedUnit
     pastePlanet = planet
     pasteCount(pasteCount() + parseInt(n, 10))
     clearTimeout(pasteReset)
-    pasteReset = setTimeout(resetCount, 2000, armyIndex())
+    pasteReset = setTimeout(resetCount, 2000, pasteArmyIndex)
   }
 
   // API Hook
@@ -229,6 +229,17 @@
     if (!selectedUnit.spec || selectedUnit.spec == '') return
     if (armyIndex() == -1) return
     var army_id = model.players()[armyIndex()].id
+    var pasteArmyIndex = armyIndex()
+    var pasteSelectedUnit = selectedUnit
+
+    var pod = {
+      army: army_id,
+      what: dropPodSpec,
+    }
+    var contents = {
+      army: army_id,
+      what: selectedUnit.spec
+    }
 
     var scale = api.settings.getSynchronous('ui', 'ui_scale') || 1.0;
 
@@ -238,18 +249,10 @@
     hdeck.raycast(x, y).then(function(result) {
       setTimeout(ping, 4000 / simSpeed, armyIndex(), result)
 
-      var pod = {
-        army: army_id,
-        what: dropPodSpec,
-      }
       model.pasteUnits3D(1, pod, result)
-      var contents = {
-        army: army_id,
-        what: selectedUnit.spec
-      }
       setTimeout(model.pasteUnits3D, 5000 / simSpeed, n, contents, result)
 
-      increment(n, result.planet)
+      increment(pasteArmyIndex, n, pasteSelectedUnit, result.planet)
     })
   }
   pasteUnits.raycast = true
