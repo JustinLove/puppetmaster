@@ -1,5 +1,6 @@
-## 3.2.3
+## 3.3.0
 
+- Forward unit changes to Bulk Paste Units
 - Improve capture of unit info when rapidly changing units
 - Use engine sim speed instead of local estimation
 

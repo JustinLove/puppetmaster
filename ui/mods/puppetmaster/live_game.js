@@ -175,6 +175,7 @@
       var spec = arguments[1]
       var unit = model.unitSpecs[spec]
       selectedUnit = {spec: spec, name: (unit && loc(unit.name)) || 'unknown'}
+      if (handlers.bulkCreateUnitSelected) handlers.bulkCreateUnitSelected(spec)
     }
 
     return engineCall.apply(this, arguments);
