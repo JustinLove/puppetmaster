@@ -2,7 +2,7 @@
 
 - Forward unit changes to Bulk Paste Units
 - Improve capture of unit info when rapidly changing units
-- Use engine sim speed instead of local estimation
+- Unit and effects placements are done in sim time instead of adjusted UI time
 
 ## 3.2.2
 

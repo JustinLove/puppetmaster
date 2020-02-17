@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  console.log('puppetmaster')
+  //console.log('puppetmaster')
 
   // Pointer tracking
   var mouseX = 0
@@ -11,6 +11,42 @@
     mouseX = e.offsetX
     mouseY = e.offsetY
     hdeck = $(this).data('holodeck')
+  }
+
+  // sim time event queue
+  var simTime = 0
+  var eventQueue = []
+
+  var setTimeoutSim = function(f, timeout) {
+    var args = Array.prototype.slice.call(arguments, 2)
+    var t = simTime + timeout/1000
+    var i = 0
+    for (;i < eventQueue.length;i++) {
+      if (t < eventQueue[i].time) break
+    }
+    eventQueue.splice(i, 0, {
+      time: t,
+      f: f,
+      args: args
+    })
+  }
+
+  var checkSimTimeQueue = function() {
+    while (eventQueue.length > 0 && eventQueue[0].time <= simTime) {
+      var entry = eventQueue.shift()
+      entry.f.apply(null, entry.args)
+    }
+  }
+
+  var base_time = handlers.time
+  handlers.time = function(payload) {
+    base_time(payload)
+
+    if (payload.end_time == simTime) return
+
+    simTime = payload.end_time
+
+    checkSimTimeQueue()
   }
 
   // Ping
@@ -205,10 +241,10 @@
     var y = Math.floor(mouseY * scale);
 
     hdeck.raycast(x, y).then(function(result) {
-      setTimeout(ping, 4000 / model.serverRate(), armyIndex(), result)
+      setTimeoutSim(ping, 4000, armyIndex(), result)
 
       model.pasteUnits3D(1, pod, result)
-      setTimeout(model.pasteUnits3D, 5000 / model.serverRate(), n, contents, result)
+      setTimeoutSim(model.pasteUnits3D, 5000, n, contents, result)
 
       increment(pasteArmyIndex, n, pasteSelectedUnit, result.planet)
     })
